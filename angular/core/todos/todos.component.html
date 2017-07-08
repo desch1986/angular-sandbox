@@ -1,0 +1,24 @@
+<div class="row mt-3">
+    <div class="col-10">
+        <input class="description-box" type="text" [(value)]="description" placeholder="What do you have to do?">
+    </div>
+</div>
+
+<p class="lead mt-3">Today</p>
+<div *ngFor="let toDo of toDos">
+    <div class="row mt-3">
+        <div class="col-9">
+            <span *ngIf="toDo.description">{{toDo.description}}</span>
+        </div>
+        <div class="col-1 text-right">
+            <confirmation (confirmationFunction)="deleteElement(toDo.id)" 
+                [pk]='toDo.id' 
+                [title]="'Please confirm'" 
+                [message]="'Do you really want to delete the current item?'" 
+                [icon]="'fa-trash'"></confirmation>
+        </div> 
+    </div>
+</div>
+
+<p class="lead text-center mt-5">ToDo Management</p>
+<p class="lead text-center">Work in progress...</p>
